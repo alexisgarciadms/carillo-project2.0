@@ -1,0 +1,162 @@
+//Colors to be used at anytime
+$primary-color: #d4bda8;
+$secondary-color: #5C4033;
+//Creating a function for a transition that we can call at anytime
+@mixin easeOut{
+    //this transition affects all things that could be transtioned at 
+    //a rate of 5s and it will ease out
+    transition: all 0.5s ease-out;
+}
+
+//Creating the menu button
+.menu-btn{
+    //button will be in the right top corner
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    //ease-out will be used as the transtion
+    @include easeOut;
+    
+    //styling for a signle line of the menu button
+    .btn-line{
+        width: 28px;
+        height: 3px;
+        //the margin between each line will be 5px apart from each other
+        //therefore 5px down
+        margin: 0 0 5px 0;
+        background: white;
+        @include easeOut;
+    }
+
+    //Rotate the Menu button lines
+    &.close{
+        transform: rotate(180deg);
+        .btn-line{
+            //Line 1 will rotate
+            &:nth-child(1){
+                transform: rotate(45deg) translate(5px, 5px);
+                background: $secondary-color;
+            }
+            //Line 2 will disappear
+            &:nth-child(2){
+                opacity: 0;
+            }
+            //Line 3 will rotate
+            &:nth-child(3){
+                transform: rotate(-45deg) translate(7px, -6px);
+                background: $secondary-color;
+            }
+        }
+    }
+}
+
+//Menu Overlay
+.menu{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 1;
+    //this hides the navigation links from the homepage
+    visibility: hidden;
+
+    //shows navigation links when clicked 
+    &.show{
+        visibility: visible;
+    }
+
+    //Creating two columns with the navigation links 
+    //same as saying .menu-branding or .menu-nav since we are
+    //trying to access both classes 
+    &-branding, &-nav{
+        //ceating two columns
+        display: flex;
+        flex-flow: column wrap;
+        //aligning everything
+        align-items: center;
+        justify-content: center;
+        float: left;
+        //splitting the column in half
+        width: 50%;
+        //making sure all the space is taken
+        height: 100vh;
+        //hiding scrollbars
+        overflow: hidden;
+    }
+
+    //Accesing only the menu-nav class
+    &-nav{
+        margin: 0;
+        padding: 0;
+        //creating the left side column with the nav links
+        background: darken($primary-color, 5);
+        //removing bullet points
+        list-style: none;
+        //column will appear from the top of the page
+        transform: translate3d(0, -100%, 0);
+        @include easeOut;
+        //when we click the menu button 
+        &.show{
+            //allows for the tranformation to slide in from top
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    //Accessing only the menu-branding class
+    &-branding{
+        background: white;
+        //column will appear from the bottom of the page
+        transform: translate3d(0, 100%, 0);
+        @include easeOut;
+        //when we click the menu button 
+        &.show{
+            //allows for the tranformation to slide in from bottom
+            transform: translate3d(0, 0, 0);
+        }
+
+        //creating portrait for right side of column
+        .portrait{
+            width: 250px;
+            height: 250px;
+            background: url('../img/IMG_5921.jpg');
+            background-size: cover;
+            //making the image round
+            border-radius: 50%;
+            //creating a border around it 
+            border: solid 3px $secondary-color;
+        }
+    }
+    
+
+    .nav-item{
+        //the nav links will slide from the right
+        transform: translate3d(0, 0, 0);
+        @include easeOut;
+        //when we click the menu button
+        &.show{
+            //allows for the tranformation to slide in from right
+            transform: translate3d(0, 0, 0);            
+        }        
+    }
+
+    .nav-links{
+        display: inline-block;
+        position: relative;
+        font-size: 30px;
+        padding: 10px;
+        font-weight: 300;
+        @include easeOut;
+        &:hover{
+            color: $secondary-color;
+        }
+    }
+}
+
+//creating a function that will delay the nav items using a for loop
+@for $x from 1 through 7 {//looping for each nav link that we have
+    .nav-item:nth-child(#{$x}){//we have to wrap the iterator x for it to work
+        //we will delay each nav link by a 1s
+        transition-delay: $x * .15s;
+    }
+}

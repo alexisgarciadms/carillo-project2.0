@@ -1,0 +1,14 @@
+{
+  "name": "carillo-project2.0",
+  "version": "1.0.0",
+  "description": "second version of website",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Alexis Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}

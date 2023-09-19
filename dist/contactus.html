@@ -1,0 +1,87 @@
+<!-- Project V.2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a7e5dde33e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Contact Us</title>
+</head>
+<body>
+    <header>
+        <!--Creating a menu button that will be placed in the corner-->
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+
+        <!--Creating a navigation menu-->
+        <nav class="menu">
+            <!--background image for menu navigation-->
+            <div class="menu-branding">
+                <div class="portrait"></div>
+            </div>
+            <!--Creating a list of the links-->
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-links">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-links">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="kitchenRemodeling.html" class="nav-links">Kitchen Remodeling</a>
+                </li>
+                <li class="nav-item">
+                    <a href="bathroomRemodeling.html" class="nav-links">Bathroom Remodeling</a>
+                </li>
+                <li class="nav-item">
+                    <a href="reflooring.html" class="nav-links">Re-flooring</a>
+                </li>
+                <li class="nav-item">
+                    <a href="additions.html" class="nav-links">Additions</a>
+                </li>
+                <li class="nav-item current">
+                    <a href="contactus.html" class="nav-links">Contact Us</a>
+                </li>                
+            </ul>
+        </nav>
+    </header>
+
+    <main id="contact-us">
+        <!--Creating the title-->
+        <h1 class="heading-1">
+            Contact <span class="secondary-text">Us</span>
+        </h1>
+        <!--Creating a subtitle-->
+        <h2 class="heading-2">
+            Reach Out to the Team
+        </h2>
+        <!--Creating the main paragraph-->
+        <div class="contact-us">
+            <fieldset>
+                <legend><h2>Client Information</h2></legend>
+                <label>
+                <!--First name, last name, email, and phone input-->
+                    <input type="text" placeholder="First Name" name="first-name"  required="required"/>
+                    <input type="text" placeholder="Last Name" name="last-name" required="required"/><br>
+                    <input type="text" placeholder="Email" name="email"  required="required"/>
+                    <input type="text" placeholder="Phone Number" name="phond-number"  required="required"/>
+                </label><br>
+                <!--Comments Input-->
+                <textarea name="comments" placeholder="Enter your comments..."></textarea><br>
+                <button type="submit" class="contact-us-button">Submit</button>
+            </fieldset>  
+        </div>     
+    </main>
+
+    <!--Creating a footer with copright to it-->
+    <footer>
+        Copright &copy; 2023;
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

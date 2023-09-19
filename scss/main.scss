@@ -1,0 +1,254 @@
+@import 'menu';
+
+//Colors to be used at anytime
+$primary-color: #d4bda8;
+$secondary-color: #5C4033;
+
+
+//A background image that will not be changed
+$show-home-image: true;
+$home-image: url('../img/iStock-1173658667-res.jpg');
+$background-image-opacity: 0.5;
+
+//Creating a function that will take care of the background
+@mixin background{
+    //creating an if statement to check if the show home image is true 
+    @if $show-home-image{
+        //if true we set the background to the image we selected
+        &#background-image{
+            background: $home-image;
+            //keeps the image in a fixed location
+            background-attachment: fixed;
+            //covers the entire site
+            background-size: cover;
+            //will be used as an overlay of the background and text 
+            &:after{
+                //we don't want any content, therefore we leave the string empty
+                content: '';
+                //making sure everything is covered
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                //setting the text on top of the overlay
+                z-index: -1;
+                //setting the primary color on top of the background
+                background:rgba($primary-color, $background-image-opacity);
+            }
+        }
+    }
+}
+
+// Takes everything in css and making padding absoulute 
+*{
+    box-sizing: border-box;
+}
+
+body{
+    @include background;
+    background: $primary-color;
+    color: white;
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+// Headings
+h1, h2, h3{
+    margin: 0;
+    font-weight: 400;
+
+    //larger heading (formatted to work with sass)
+    &.heading-1{
+        font-size: 4rem;
+    }
+
+    //smaller heading underneath
+    &.heading-2{
+        //pushes icons a bit further down
+        margin-bottom: 2rem;        
+    }
+}
+
+//Takes all links
+a{
+    color: white;
+    //takes out underline
+    text-decoration: none;
+}
+
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+//Second half of the title
+.secondary-text{
+    color: $secondary-color;
+}
+
+main{
+    padding: 4rem;
+    //Making sure the footer stays in the bottom
+    min-height: calc(100vh -10vh);
+
+    //takes the class of icons from the class main 
+    .icons{
+        //pushes the icons a bit down
+        margin-top: 1rem;
+        //grabs all the a tags within the class main (all the icons)
+        a{
+            padding: 0.4rem;
+            //this affects the a tags (icons) when we hover
+            &:hover{
+                color: $secondary-color;
+            }
+        }
+    }
+
+    //takes the id home from the class main
+    &#home{
+        //hides scrollbars
+        overflow: hidden;
+        h1{
+            //lowers the heading by 25 viewport height
+            margin-top: 25vh;
+        }
+    }
+}
+
+
+
+
+
+//          CSS for About page         //
+//Setting the title to the top of the page
+.page-titles{
+    .heading-1{
+        margin-top: 10vh;
+    }
+}
+
+//We will be using grid template to create the webpage
+.about-info{
+    display: grid;
+    gap: 30px;
+    //the grid will have the bio running across and three boxes running underneath
+    grid-template-areas: 
+    'bio bio bio' 
+    'block1 block2 block3';
+    //the boxes will be 1fr for the columns
+    grid-template-columns: repeat(3, 1fr);
+}
+
+//Setting up the areas for the grid template
+.bio{
+    grid-area: bio;
+    font-size: 1.25rem;
+}
+.block-1{
+    grid-area: block1;
+}
+.block-2{
+    grid-area: block2;
+}
+.block-3{
+    grid-area: block3;
+}
+
+//Styling the boxes
+.block{
+    background: lighten($primary-color, 5);
+    padding: 5rem;
+    border-bottom: $secondary-color 5px solid;
+    border-top: $secondary-color 5px solid;
+    border-radius: 10px;
+    text-align: center;
+    color: $secondary-color;
+}
+
+footer{
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    height: 10vh;
+}
+
+
+
+
+
+//          CSS for other pages         //
+//Most of sytling is already done in the about page
+
+//We will be using grid template to create the webpage
+.main-info{
+    display: grid;
+    gap: 30px;
+    //the grid will have the bio running across and three boxes running underneath
+    grid-template-areas: 
+    'bio bio' 
+    'block1 block2';
+    //the boxes will be 1fr for the columns
+    grid-template-columns: repeat(2, 1fr);
+}
+
+//Styling the picture 
+.pic{
+    grid-area: block1;
+    img{
+        border-radius: 10px;
+    }
+}
+
+
+
+
+
+//          CSS for Contact Us page         //
+.contact-us{
+    text-align: center;
+}
+
+//Styling the input fields
+input{
+    margin: 5px;
+    width: 20%;   
+    height: 30px;     
+}
+
+//Styling the comment section
+textarea{
+    width: 41.5%;
+    height: 80px;
+}
+
+//Styling the border of the fieldset
+fieldset{
+    border: 1.5px solid $secondary-color;
+    border-radius: 5px;
+}
+
+//Styling the button
+button{
+    background-color: white;
+    color: $secondary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    &:hover{
+        background-color: $secondary-color;
+        color: white;
+    }
+}
+
+
+//Running all main css first 
+@import 'mobile';
+
+
